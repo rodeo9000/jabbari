@@ -42,10 +42,12 @@ justinStats = {
 #weapons
 WaterGun = {"Name": "Water Gun", "DMG": 15, "ACC": 60}
 WoodenStick = {"Name": "Wooden Stick" ,"DMG": 10, "ACC": 70}
-MetalStick = {"Name": "Metal Stick" ,"DMG": 20, "ACC": 70}
-WaterBlaster = {"Name": "Water Blaster" ,"DMG": 25, "ACC": 65}
-LaserGun = {"Name": "Laser Gun" ,"DMG":30, "ACC": 75}
-Exterminator = {"Name": "Exterminator" ,"DMG":50, "ACC": 65}
+MetalStick = {"Name": "Metal Stick" ,"DMG": 20, "ACC": 70, "Price": 20}
+WaterBlaster = {"Name": "Water Blaster" ,"DMG": 25, "ACC": 65, "Price": 30}
+LaserGun = {"Name": "Laser Gun" ,"DMG":30, "ACC": 75, "Price": 50}
+Exterminator = {"Name": "Exterminator" ,"DMG":50, "ACC": 65, "Price": 100}
+
+weaponSmithItems = [MetalStick, WaterBlaster, LaserGun, Exterminator]
 
 
 #playerweapons
@@ -55,15 +57,40 @@ pWeapons = [WaterGun, WoodenStick]
 #moves
 LightAttack = {"Name": "Light Attack", "DMG": 20, "ACC": 30}
 MediumAttack = {"Name": "Medium Attack", "DMG": 25, "ACC": 20}
-Dash = {"Name": "Dash", "DMG": 25, "ACC": 30}
-HeavyAttack = {"Name": "Heavy Attack", "DMG": 35, "ACC": 15}
-UltraAim = {"Name": "Ultra Aim", "DMG": 25, "ACC": 40}
-RapidFire = {"Name": "Rapid Fire", "DMG": 25, "ACC": 30}
-UltraAttack = {"Name": "Ultra Attack", "DMG": 40, "ACC": 30}
+Dash = {"Name": "Dash", "DMG": 25, "ACC": 30, "Price": 20}
+HeavyAttack = {"Name": "Heavy Attack", "DMG": 35, "ACC": 15, "Price": 30}
+UltraAim = {"Name": "Ultra Aim", "DMG": 25, "ACC": 40, "Price": 45}
+RapidFire = {"Name": "Rapid Fire", "DMG": 40, "ACC": 30, "Price": 75}
+UltraAttack = {"Name": "Ultra Attack", "DMG": 50, "ACC": 30, "Price": 80}
 
+moveShopItems = [Dash, HeavyAttack, UltraAim, RapidFire, UltraAttack]
 
 #playermoves
 pMoveSet = [LightAttack, MediumAttack]
+
+
+#upgrades
+hpboost = {"Name": "Hp Boost", "Price": 30}
+defboost = {"Name": "Def Boost", "Price": 30}
+atkboost = {"Name": "Atk Boost", "Price": 40}
+
+upgradeShopItems = [hpboost, defboost, atkboost]
+
+
+#ultra things
+
+MegaBlaster = {"Name": "Mega Blaster", "DMG": 65, "ACC": 70, "Price": }
+JumboRocket = {"Name": "Jumbo Rocket", "DMG": 80, "ACC": 30, "Price": 20}
+InfintyGun = {"Name": "Dash", "DMG": 25, "ACC": 30, "Price": 20}
+
+OmegaAttack = {"Name": "Dash", "DMG": 25, "ACC": 30, "Price": 20}
+SuperSpeed = {"Name": "Dash", "DMG": 25, "ACC": 30, "Price": 20}
+OmniAttack = {"Name": "Dash", "DMG": 25, "ACC": 30, "Price": 20}
+
+UltraBoost = {}
+
+
+table = [["1. Metal Stick", "20 DMG, 70 ACC", 25],["2. Water Blaster", "25 DMG, 65 ACC", 40],["3. Laser Gun","30 DmG, 75 ACC", 65], ["4. Exterminator", "50 DMG, 65 ACC", 100]]
 
 
 #ENEMIES
@@ -203,6 +230,7 @@ def playerDMG():
     hitchance = pCurrentMove["ACC"] + pCurrentWeapon["ACC"]
     if randint(1, 100) <= hitchance:
         enemyhp -= dmg
+        time.sleep(1)
         print ("You hit", colored(enemy["name"], 'yellow'), "for", colored(dmg, 'red'), "damage!")
         if enemyhp <= 0:
             print ("You are now at", colored(playerStats["hp"], 'green'), "hp, the", colored(enemy["name"], 'yellow'), "has been defeated")
@@ -210,7 +238,8 @@ def playerDMG():
             print ("You are now at", colored(playerStats["hp"], 'green'), "hp, the", colored(enemy["name"], 'yellow'), "is now at", colored(enemyhp, 'red'), "hp")
         print ("")
     else:
-        print (colored('You missed...', 'blue'))
+        time.sleep(2)
+        print (colored('You missed...', 'red'))
         print ("")
 
 #CPUMove
@@ -223,15 +252,16 @@ def cpuMove():
         if randint(1,100) <= enemy["acc"]:
             playerStats["hp"] -= dmg
             print ("")
+            time.sleep(1)
             print("The", colored(enemy["name"], 'yellow'), "hit you for", colored(dmg, 'red'), "damage." '''
     You are now at''', colored(playerStats["hp"], 'green'), "hp, the", colored(enemy["name"], 'yellow'), "is now at", colored(enemyhp, 'red'), "hp")
             print ("")
         else:
             print ("")
-            print(colored('The opponent missed...', 'blue'))
+            print(colored('The opponent missed...', 'red'))
             print ("")
     else:
-        print
+        print ("")
 
 #Endmove
 def endMove():
@@ -280,6 +310,276 @@ def tutorial():
     shopFunc()
 
 
+#WeaponSmithFunc
+def weaponSmith():
+    global chosenItem, pGoldCoins
+    print ("")
+    print (colored("Welcome to the Weapon Smith", 'red'))
+
+    table = [["1. Metal Stick", "20 DMG, 70 ACC", 25],["2. Water Blaster", "25 DMG, 65 ACC", 40],["3. Laser Gun","30 DmG, 75 ACC", 65], ["4. Exterminator", "50 DMG, 65 ACC", 100]]
+    headers = ["Item", "Stats", "Cost"]
+    print(tabulate(table, headers, tablefmt="psql"))
+    print ("")
+
+    itemChooseInput = input(colored("Please type the number of the weapon you want to buy or type 0 to exit:", 'cyan'))
+    print ("")
+    try:
+        chosenItem = int(itemChooseInput)
+    except:
+        print (colored("That is not a number. Try again.", 'red'))
+        print ("")
+        return weaponSmith()
+
+    if chosenItem == 0:
+        return shopFunc()
+        
+    elif chosenItem > len(weaponSmithItems):
+        print (colored("That is not an option. Try again.", 'red'))
+        print ("")
+        return weaponSmith()
+    
+    chosenItem = weaponSmithItems[chosenItem - 1]
+
+    if chosenItem in pWeapons:
+        staggeredText(0.05, colored("You already have this weapon", 'magenta'))
+        return weaponSmith()
+    elif chosenItem not in pWeapons:
+        print ("")
+        if chosenItem['Price'] > pGoldCoins:
+            staggeredText(0.05, colored("You do not have enough gold coins to buy this weapon. ", 'red'))
+            print ("")
+            return weaponSmith()
+
+        elif chosenItem['Price'] <= pGoldCoins:
+            didBuy = 0
+
+            while didBuy == 0:
+                print (colored("To buy this weapon, type 'buy', or to exit type 'exit", 'yellow'))
+                print ("")
+                wannaBuy = input("Are you sure you want to buy " + chosenItem['Name'] + " for " + str(chosenItem['Price']) + " coins. You will only have " + str(pGoldCoins) + " gold coins left.\n").lower()
+                if wannaBuy == "buy":
+                    pGoldCoins -= chosenItem['Price']
+                    staggeredText(0.05, colored("You have now bought " + chosenItem['Name'] + " for " + str(chosenItem['Price']) + " gold coins", 'green'))
+                    print ("The " + chosenItem['Name'] + " has now been added to your weapons menu")
+                    pWeapons.append(chosenItem)
+                    didBuy = 1
+                    return weaponSmith()
+
+                
+                elif wannaBuy == "exit":
+                    staggeredText(0.05, colored("Exiting...", 'yellow'))
+                    didBuy = 1
+                    return weaponSmith()
+
+                else:
+                    print ("")
+                    print (colored("That is not an option", 'red'))
+                    print ("")
+                    didBuy = 0
+
+
+
+#MoveShopFunc
+def MoveShop():
+    global chosenItem, pGoldCoins
+    print ("")
+    print (colored("Welcome to the Move Shop", 'blue'))
+
+    table = [["1. Dash", "25 DMG, 30 ACC", 20],["2. Heavy Attack", "35 DMG, 15 ACC", 30],["3. Ultra Aim","25 DmG, 40 ACC", 45], ["4. RapidFire", "40 DMG, 30 ACC", 75], ["5. Ultra Attack", "50 DMG, 30 ACC", 80]]
+    headers = ["Item", "Stats", "Cost"]
+    print(tabulate(table, headers, tablefmt="psql"))
+    print ("")
+
+    itemChooseInput = input(colored("Please type the number of the move you want to buy or type 0 to exit:", 'cyan'))
+    print ("")
+    try:
+        chosenItem = int(itemChooseInput)
+    except:
+        print (colored("That is not a number. Try again.", 'red'))
+        print ("")
+        return MoveShop()
+
+    if chosenItem == 0:
+        return shopFunc()
+        
+    elif chosenItem > len(moveShopItems):
+        print (colored("That is not an option. Try again.", 'red'))
+        print ("")
+        return MoveShop()
+    
+    chosenItem = moveShopItems[chosenItem - 1]
+
+    if chosenItem in pMoveSet:
+        staggeredText(0.05, colored("You already have this move", 'magenta'))
+        return MoveShop()
+    elif chosenItem not in pMoveSet:
+        print ("")
+        if chosenItem['Price'] > pGoldCoins:
+            staggeredText(0.05, colored("You do not have enough gold coins to buy this item. ", 'red'))
+            print ("")
+            return MoveShop()
+
+        elif chosenItem['Price'] <= pGoldCoins:
+            didBuy = 0
+
+            while didBuy == 0:
+                print (colored("To buy this move, type 'buy', or to exit type 'exit", 'yellow'))
+                print ("")
+                wannaBuy = input("Are you sure you want to buy " + chosenItem['Name'] + " for " + str(chosenItem['Price']) + " coins. You will only have " + str(pGoldCoins) + " gold coins left.\n").lower()
+                if wannaBuy == "buy":
+                    pGoldCoins -= chosenItem['Price']
+                    staggeredText(0.05, colored("You have now bought " + chosenItem['Name'] + " for " + str(chosenItem['Price']) + " gold coins", 'green'))
+                    print ("The " + chosenItem['Name'] + " has now been added to your moves menu")
+                    pMoveSet.append(chosenItem)
+                    didBuy = 1
+                    return MoveShop()
+
+                
+                elif wannaBuy == "exit":
+                    staggeredText(0.05, colored("Exiting...", 'yellow'))
+                    didBuy = 1
+                    return MoveShop()
+
+                else:
+                    print ("")
+                    print (colored("That is not an option", 'red'))
+                    print ("")
+                    didBuy = 0
+
+#UpgradeShopFunc
+def upgradeShop():
+    global chosenItem, pGoldCoins
+    print ("")
+    print (colored("Welcome to the Upgrade Shop", 'blue'))
+
+    table = [["1. Hp Boost", "Incrases your hp and bhp by 15", 30],["2. Def Boost", "Increase your defence by 10", 30],["3. Atk Boost","Increase your attack by 15", 40]]
+    headers = ["Item", "Stats", "Cost"]
+    print(tabulate(table, headers, tablefmt="psql"))
+    print ("")
+
+    itemChooseInput = input(colored("Please type the number of the upgrade you want to buy or type 0 to exit:", 'cyan'))
+    print ("")
+    try:
+        chosenItem = int(itemChooseInput)
+    except:
+        print (colored("That is not a number. Try again.", 'red'))
+        print ("")
+        return upgradeShop()
+
+    if chosenItem == 0:
+        return upgradeShop()
+        
+    elif chosenItem > len(upgradeShopItems):
+        print (colored("That is not an option. Try again.", 'red'))
+        print ("")
+        return upgradeShop()
+    
+    chosenItem = upgradeShopItems[chosenItem - 1]
+
+    if chosenItem['Price'] > pGoldCoins:
+        staggeredText(0.05, colored("You do not have enough gold coins to buy this upgrade. ", 'red'))
+        print ("")
+        return upgradeShop()
+
+    elif chosenItem['Price'] <= pGoldCoins:
+        print (colored("To buy this upgrade, type 'buy', or to exit type 'exit", 'yellow'))
+        print ("")
+        didBuy = 0
+        while didBuy == 0:
+
+            wannaBuy = input("Are you sure you want to buy " + chosenItem['Name'] + " for " + str(chosenItem['Price']) + " coins. You will only have " + str(pGoldCoins) + " gold coins left.\n").lower()
+            if wannaBuy == "buy":
+                if chosenItem['Name'] == "Hp Boost":
+                    pGoldCoins -= chosenItem['Price']
+                    playerStats["hp"] += 15
+                    playerStats['bhp'] += 15
+                    staggeredText(0.05, colored("You have now bought " + chosenItem['Name'] + " for " + str(chosenItem['Price']) + " gold coins", 'yellow'))
+                    staggeredText(0.05, colored("Your hp is now at " + str(playerStats['hp']), 'green'))
+                    print ("")
+
+                elif chosenItem['Name'] == "Def Boost":
+                    pGoldCoins -= chosenItem['Price']
+                    playerStats["def"] += 10
+                    staggeredText(0.05, colored("You have now bought " + chosenItem['Name'] + " for " + str(chosenItem['Price']) + " gold coins", 'yellow'))
+                    staggeredText(0.05, colored("Your def is now at " + str(playerStats['def']), 'green'))
+                    print ("")
+
+                elif chosenItem['Name'] == "Atk Boost":
+                    pGoldCoins -= chosenItem['Price']
+                    playerStats['atk'] += 15
+                    staggeredText(0.05, colored("You have now bought " + chosenItem['Name'] + " for " + str(chosenItem['Price']) + " gold coins", 'green'))
+                    staggeredText(0.05, colored("Your atk is now at " + str(playerStats['atk']), 'green'))
+                    print ("")
+
+                didBuy = 1
+                return upgradeShop
+
+            else:
+                print ("")
+                print (colored("That is not an option", 'red'))
+                didBuy = 0
+
+
+#ultraShopFunc
+def ultraShop():
+    global chosenItem, pGoldCoins
+    print ("")
+    print (colored("Welcome to the Ultra Shop", 'magenta'))
+    print ("Here everything costs ultra coins which can be obtained by killing bosses")
+
+    table = [["1. Metal Stick", "20 DMG, 70 ACC", 25],["2. Water Blaster", "25 DMG, 65 ACC", 40],["3. Laser Gun","30 DmG, 75 ACC", 65], ["4. Exterminator", "50 DMG, 65 ACC", 100]]
+    headers = ["Item", "Stats", "Cost"]
+    print(tabulate(table, headers, tablefmt="psql"))
+    print ("")
+
+    itemChooseInput = input(colored("Please type the number of the weapon you want to buy or type 0 to exit:", 'cyan'))
+    print ("")
+    try:
+        chosenItem = int(itemChooseInput)
+    except:
+        print (colored("That is not a number. Try again.", 'red'))
+        print ("")
+        return weaponSmith()
+
+    if chosenItem == 0:
+        return shopFunc()
+        
+    elif chosenItem > len(weaponSmithItems):
+        print (colored("That is not an option. Try again.", 'red'))
+        print ("")
+        return weaponSmith()
+    
+    chosenItem = weaponSmithItems[chosenItem - 1]
+
+    if chosenItem in pWeapons:
+        staggeredText(0.05, colored("You already have this weapon", 'magenta'))
+        return weaponSmith()
+    elif chosenItem not in pWeapons:
+        print ("")
+        if chosenItem['Price'] > pGoldCoins:
+            staggeredText(0.05, colored("You do not have enough gold coins to buy this weapon. ", 'red'))
+            print ("")
+            return weaponSmith()
+
+        elif chosenItem['Price'] <= pGoldCoins:
+            pGoldCoins -= chosenItem['Price']
+            print (colored("To buy this weapon, type 'buy', or to exit type anything else", 'yellow'))
+            print ("")
+            wannaBuy = input("Are you sure you want to buy " + chosenItem['Name'] + " for " + str(chosenItem['Price']) + " coins. You will only have " + str(pGoldCoins) + " gold coins left.\n").lower()
+            if wannaBuy == "buy":
+                staggeredText(0.05, colored("You have now bought " + chosenItem['Name'] + " for " + str(chosenItem['Price']) + " gold coins", 'green'))
+                print ("The " + chosenItem['Name'] + " has now been added to your weapons menu")
+                pWeapons.append(chosenItem)
+                return weaponSmith()
+            else:
+                pGoldCoins += chosenItem['Price']
+                print ("")
+                print ("You have not bough this weapon")
+                print ("")
+                return weaponSmith()
+
+
+
 
 shopWhereLoop = 0
 #ShopFunc
@@ -289,49 +589,40 @@ def shopFunc():
     staggeredText(0.1, colored("Welcome to the shop", 'yellow'))
     print ("")
     while shopWhereLoop == 0:
-        shopWhere = input("Where you like to go. 1. Armory, 2. Weapon Smith, 3. Move Shop, 4. Upgrade Shop, 5. Ultra Shop")
+        shopWhere = input("Where you like to go. 1. Weapon Smith, 2. Move Shop, 3. Upgrade Shop, 4. Ultra Shop or 0. Exit")
         print ("")
-        if shopWhere == '1':
-            shopWhereLoop = 1
-            print(colored("Welcome to the Armory", 'blue'))
-
-            table = [["1. Metal Stick", "20 DMG, 70 ACC", 25],["2. Water Blaster", "25 DMG, 65 ACC", 40],["3. Laser Gun","30 DmG, 75 ACC", 65], ["4. Exterminator", "50 DMG, 65 ACC", 100]]
-            headers = ["Item", "Stats", "Cost"]
-            print(tabulate(table, headers, tablefmt="psql"))
-            
-            staggeredText(0.05, "Please type the number of the item you want to buy or type 0 to exit")
-
-            break
         
-        elif shopWhere == '2':
-            print (colored("Welcome to the Weapon Smith", 'red'))
 
+        if shopWhere == '0':
+            staggeredText(0.1, colored("Exiting ...", 'red'))
+            shopWhereLoop = 1
+            break
+
+        elif shopWhere == '1':
+            weaponSmith()
+            shopWhereLoop = 1
+            break
+
+        elif shopWhere == '2':
+            MoveShop()
             shopWhereLoop = 1
             break
 
         elif shopWhere == '3':
-            print (colored("Welcome to the Move Shop", 'yellow'))
-
+            upgradeShop()
             shopWhereLoop = 1
             break
 
         elif shopWhere == '4':
-            print (colored("Welcome to the Upgrade Shop", 'green'))
-
-            shopWhereLoop = 1
-            break
-
-        elif shopWhere == '5':
-            print(colored("Welcome to the Ultra Shop", 'magenta'))
-
+            ultraShop()
             shopWhereLoop = 1
             break
 
         else:
-            print ("That is not an option please try again.")
+            print (colored("That is not an option please try again.", 'red'))
             print ("")
 
-        
+
 
 
 
@@ -369,7 +660,7 @@ while playTutorial == 0:
         playTutorial = 0
 
 
-
+print ("hi")
 
 
 
