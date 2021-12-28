@@ -21,22 +21,22 @@ pGoldCoins = 0
 pUltraCoins = 0
 waterPilarHp = 100000
 jabbariStats = {
-	"hp": 100, 
+	"hp": 125, 
     "bhp": 100,
 	"atk": 15, 
-	"def": 5
+	"def": 10
 }
 markStats = {
-	"hp": 120, 
-    "bhp": 120,
+	"hp": 150, 
+    "bhp": 150,
 	"atk": 10, 
-	"def": 5
+	"def": 10
 }
 justinStats = {
-	"hp": 80, 
-    "bhp": 80,
+	"hp": 100, 
+    "bhp": 125,
 	"atk": 20, 
-	"def": 5
+	"def": 10
 }
 
 #weapons
@@ -81,7 +81,7 @@ upgradeShopItems = [hpboost, defboost, atkboost]
 
 MegaBlaster = {"Name": "Mega Blaster", "DMG": 75, "ACC": 70, "Price": 30}
 JumboRocket = {"Name": "Jumbo Rocket", "DMG": 90, "ACC": 70, "Price": 40}
-InfinityGun = {"Name": "Infinty Gun", "DMG": 150, "ACC": 100, "Price": 100}
+InfinityGun = {"Name": "Infinity Gun", "DMG": 150, "ACC": 100, "Price": 100}
 
 OmegaAttack = {"Name": "Omega Attack", "DMG": 70, "ACC": 30, "Price": 30}
 SuperSpeed = {"Name": "Super Speed", "DMG": 85, "ACC": 40, "Price": 45}
@@ -94,16 +94,17 @@ ultraShopItems = [MegaBlaster, JumboRocket, InfinityGun, OmegaAttack, SuperSpeed
 
 #ENEMIES
 
-Zombie = {"atk": 10, "def": 20, "hp": 100, "acc": 85, "name": "Zombie", "coins": 15}
-Skeleton = {"atk": 15, "def": 10, "hp": 100, "acc": 80, "name": "Skeleton", "coins": 20}
-WereWolf = {"atk": 15, "def": 5, "hp": 120, "acc": 90, "name": "Were Wolf", "coins": 20}
-Ogre = {"atk": 15, "def": 5, "hp": 150, "acc": 80, "name": "Ogre", "coins": 30}
-ShadowArcher = {"atk": 20, "def": 5, "hp": 90, "acc": 90, "name": "Shadow Archer", "coins": 25}
-Golem = {"atk": 20, "def": 40, "hp": 200, "acc": 75, "name": "Golem", "coins": 30}
-Yeti = {"atk": 30, "def": 20, "hp": 150, "acc": 80, "name": "Yeti", "coins": 40}
-DarkKnight = {"atk": 40, "def": 30, "hp": 180, "acc": 90, "name": "Dark Knight", "coins": 50}
-MagmaElemantal = {"atk": 30, "def": 50, "hp": 250, "acc": 80, "name": "Magma Elemental", "coins": 65}
-Necromancer = {"atk": 50, "def": 25, "hp": 150, "acc": 90, "name": "Necromancer", "coins": 85}
+Zombie = {"atk": 15, "def": 20, "hp": 100, "acc": 85, "name": "Zombie", "coins": 15}
+Skeleton = {"atk": 20, "def": 10, "hp": 100, "acc": 80, "name": "Skeleton", "coins": 20}
+WereWolf = {"atk": 25, "def": 5, "hp": 120, "acc": 90, "name": "Were Wolf", "coins": 20}
+Ogre = {"atk": 25, "def": 5, "hp": 150, "acc": 80, "name": "Ogre", "coins": 30}
+ShadowArcher = {"atk": 35, "def": 5, "hp": 90, "acc": 90, "name": "Shadow Archer", "coins": 25}
+Golem = {"atk": 30, "def": 40, "hp": 200, "acc": 75, "name": "Golem", "coins": 30}
+Yeti = {"atk": 40, "def": 20, "hp": 150, "acc": 80, "name": "Yeti", "coins": 40}
+DarkKnight = {"atk": 55, "def": 30, "hp": 180, "acc": 90, "name": "Dark Knight", "coins": 50}
+MagmaElemantal = {"atk": 50, "def": 50, "hp": 250, "acc": 80, "name": "Magma Elemental", "coins": 65}
+Necromancer = {"atk": 75, "def": 25, "hp": 150, "acc": 90, "name": "Necromancer", "coins": 85}
+PhantomKnight = {"atk": 85, "def": 45, "hp": 250, "acc": 90, "name": "Phantom Knight", "coins": 100}
 
 
 #Bosses
@@ -133,55 +134,118 @@ staggeredText(0.003, colored("    \  /\  / | \__., | | | \__. | \__. | | | | | |
 staggeredText(0.003, colored("     \/  \/   '.__.'[___]'.___.' '.__.' [___||__||__]'.__.'  \__/ '.__.'       \/  \/  \'-;__/\__/ '.__.'[___]    |______.'  '.__.' [___]  '.__.'[___||__]'.___.' '.__.' ", 'cyan'))
 print ("")
 
-characterPlay = 0
-while characterPlay == 0:
-	character = input("Who would you like to play as?, 'Jabbari', his friend 'Mark', or his sister 'Justin'\n").lower()
-	if character == "jabbari":
-		staggeredText(0.1, colored("Hello Jabbari!", 'magenta'))
-		characterPlay == 1
-		break
-	elif character == "justin":
-		staggeredText(0.1, colored("Hello Justin!", 'magenta'))
-		characterPlay == 1
-		break
-	elif character == "mark":
-		staggeredText(0.1, colored("Hello Mark!", 'magenta'))
-		characterPlay == 1
-		break
-	else:
-		print (colored("Please either type 'Jabbari', 'Justin', or 'Mark'\n", 'magenta'))
 
-
-    
 time.sleep(1)
 score = 0
-goldCoins = 0
-utlraCoins = 0
-waterPillarHp = 100000
+goldCoins = 10000
+utlraCoins = 10000
+waterPillarHp = 1000
 
 
-if character == "jabbari":
-	playerStats = jabbariStats
-elif character == "mark":
-	playerStats = markStats
-elif character == "justin":
-	playerStats = justinStats
+#Tutorial       
+def tutorial():
+    global waterPillarHp, enemy, enemyhp, pGoldCoins, newGame, playerStats
 
-print ("")
-print (colored("Here are your base starting stats " + character, 'blue'))
-print ("")
-print (colored(playerStats, 'yellow'))
-time.sleep(1)
-print("")
-staggeredText(0.025, colored("hp is the amount of health you have, if is reaches 0 during a battle then you lose, you can increase this with upgrades", 'magenta'))
-staggeredText(0.025, colored("bhp is your base hp, this is what you hp will be set to after each level, you can increase this with upgrades", 'yellow'))
-print ("")
-staggeredText(0.025, colored("atk is the amount of damage your player does, this can be increased with upgrades", 'magenta'))
-staggeredText(0.025, colored("def is the amount of defense you have, this will decrease the damage you take, you can also increase this with upgrades", 'yellow'))
-print ("")
-staggeredText(0.025, colored("The DMG of a move or weapon is the amount of damage it does, better weapons can do more damage", 'magenta'))
-staggeredText(0.025, colored("The ACC of a weapon or move is the accuracy, the chance that you will hit instead of miss the enemy, better weapons can have better accuracy", 'yellow'))
+    characterPlay = 0
+    while characterPlay == 0:
+        character = input("Who would you like to play as?, 'Jabbari', his friend 'Mark', or his sister 'Justin'\n").lower()
+        if character == "jabbari":
+            staggeredText(0.1, colored("Hello Jabbari!", 'magenta'))
+            characterPlay == 1      
+            break
+        elif character == "justin":
+            staggeredText(0.1, colored("Hello Justin!", 'magenta'))
+            characterPlay == 1
+            break
+        elif character == "mark":
+            staggeredText(0.1, colored("Hello Mark!", 'magenta'))
+            characterPlay == 1
+            break
+        else:
+            print (colored("Please either type 'Jabbari', 'Justin', or 'Mark'\n", 'magenta'))
+            
+    
+    if character == "jabbari":
+        playerStats = jabbariStats
+    elif character == "mark":
+        playerStats = markStats
+    elif character == "justin":
+        playerStats = justinStats
 
+    print ("")
+    print (colored("Here are your base starting stats " + character, 'blue'))
+    print ("")
+    print (colored(playerStats, 'yellow'))
+    time.sleep(1)
+    print("")
+    staggeredText(0.025, colored("hp is the amount of health you have, if is reaches 0 during a battle then you lose, you can increase this with upgrades", 'magenta'))
+    staggeredText(0.025, colored("bhp is your base hp, this is what you hp will be set to after each level, you can increase this with upgrades", 'yellow'))
+    print ("")
+    staggeredText(0.025, colored("atk is the amount of damage your player does, this can be increased with upgrades", 'magenta'))
+    staggeredText(0.025, colored("def is the amount of defense you have, this will decrease the damage you take, you can also increase this with upgrades", 'yellow'))
+    print ("")
+    staggeredText(0.025, colored("The DMG of a move or weapon is the amount of damage it does, better weapons can do more damage", 'magenta'))
+    staggeredText(0.025, colored("The ACC of a weapon or move is the accuracy, the chance that you will hit instead of miss the enemy, better weapons can have better accuracy", 'yellow'))
+
+
+    print ("")
+    staggeredText(0.05, colored("Hello there, this is the tutorial, it will teach you how to play the game", 'cyan'))
+    print ("")
+    staggeredText(0.05, colored("First you must learn how to defend the water pillar from attacking monsters", 'cyan'))
+    print ("")
+    staggeredText(0.05, colored("Now you must choose a weapon and then choose a move", 'cyan'))
+    print ("")
+
+    enemy = Zombie
+    print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+    print ("")
+    enemyhp = enemy["hp"]
+    while enemyhp > 0:
+        playerWeaponChoose()
+        playerMoveChoose()
+        playerDMG()
+        cpuMove()
+        endMove()
+        if enemyhp <= 0:
+            pGoldCoins += enemy["coins"]
+            staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
+            print ("")
+
+    enemy = Skeleton
+    print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+    print ("")
+    enemyhp = enemy["hp"]
+    while enemyhp > 0:
+        playerWeaponChoose()
+        playerMoveChoose()
+        playerDMG()
+        cpuMove()
+        endMove()
+        if enemyhp <= 0:
+            pGoldCoins += enemy["coins"]
+            staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
+            print ("")
+
+
+
+
+    print ("")
+    print ("")
+    print (colored("You have now defeated your first wave of monsters. Great Job!", 'cyan'))
+    print ("")
+    print (colored("As the game goes on waves will get harder to beat", 'cyan'))
+    print ("")
+    print (colored("On levels 3, 6, 9, 12 and 15 there will be a boss, bosses are extra hard to defeat but will give ultra coins when defeated", 'cyan'))
+    print ("")
+    print (colored("Next lets check out the shop, you can visit here after each level and you can spend gold coins from beating monsters on cool new things", 'magenta'))
+    shopFunc()
+    print ("")
+    print (colored("Now lets check out your inventory, you can also visit here after each level and see your weapons, moves, stats and more", 'yellow'))
+    inventory()
+
+    staggeredText(0.05, colored("Great!, now that you have completed the tutorial you are ready to start the real game.", 'green'))
+    print ("")
+    newGame()
 
 
 #PlayerWeaponChoose
@@ -234,7 +298,7 @@ def playerMoveChoose():
 
 #PlayerDamage
 def playerDMG():
-    global pCurrentWeapon, pCurrentMove, enemy, enemyhp
+    global pCurrentWeapon, pCurrentMove, enemy, enemyhp, playerStats
     dmg = pCurrentWeapon["DMG"] + playerStats["atk"] + pCurrentMove["DMG"] - enemy["def"]
     if dmg < 0:
         dmg = 0
@@ -244,12 +308,18 @@ def playerDMG():
         if enemyhp < 0:
             enemyhp = 0
         time.sleep(1)
+        print ("")
+        print ("--------------------------------------------------------------------------------------------------------------")
+        print ("")
         print ("You hit", colored(enemy["name"], 'yellow'), "for", colored(dmg, 'red'), "damage!")
         
         print ("You are now at", colored(playerStats["hp"], 'green'), "hp, the", colored(enemy["name"], 'yellow'), "is now at", colored(enemyhp, 'red'), "hp")
         print ("")
     else:
         time.sleep(2)
+        print ("")
+        print ("--------------------------------------------------------------------------------------------------------------")
+        print ("")
         print (colored('You missed...', 'red'))
         print ("")
 
@@ -267,12 +337,16 @@ def cpuMove():
             print("The", colored(enemy["name"], 'yellow'), "hit you for", colored(dmg, 'red'), "damage." '''
 You are now at''', colored(playerStats["hp"], 'green'), "hp, the", colored(enemy["name"], 'yellow'), "is now at", colored(enemyhp, 'red'), "hp")
             print ("")
+            print ("--------------------------------------------------------------------------------------------------------------")
+            print ("")
         else:
             print ("")
             print(colored('The opponent missed...', 'red'))
             print ("")
+            print ("--------------------------------------------------------------------------------------------------------------")
+            print ("")
     else:
-        print ("")
+        print
 
 #Endmove
 def endMove():
@@ -286,65 +360,6 @@ def endMove():
     else:
         print ("")
 
-#Tutorial       
-def tutorial():
-    global waterPillarHp, enemy, enemyhp, pGoldCoins, newGame
-    print ("")
-    staggeredText(0.05, colored("Hello there, this is the tutorial, it will teach you how to play the game", 'cyan'))
-    print ("")
-    staggeredText(0.05, colored("First you must learn how to defend the water pillar from attacking monsters", 'cyan'))
-    print ("")
-    staggeredText(0.05, colored("Now you must choose a weapon and then choose a move", 'cyan'))
-    print ("")
-
-    enemy = Zombie
-    print("A", colored(enemy["name"], 'yellow'), "attacked you!")
-    print ("")
-    enemyhp = enemy["hp"]
-    while enemyhp > 0:
-        playerWeaponChoose()
-        playerMoveChoose()
-        playerDMG()
-        cpuMove()
-        endMove()
-        if enemyhp <= 0:
-            pGoldCoins += enemy["coins"]
-            staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
-
-
-    enemy = Skeleton
-    print("A", colored(enemy["name"], 'yellow'), "attacked you!")
-    print ("")
-    enemyhp = enemy["hp"]
-    while enemyhp > 0:
-        playerWeaponChoose()
-        playerMoveChoose()
-        playerDMG()
-        cpuMove()
-        endMove()
-        if enemyhp <= 0:
-            pGoldCoins += enemy["coins"]
-            staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
-
-
-
-
-
-    print ("")
-    print ("")
-    print (colored("You have now defeated your first wave of monsters. Great Job!", 'cyan'))
-    print ("")
-    print (colored("As the game goes on waves will get harder to beat", 'cyan'))
-    print ("")
-    print (colored("Next lets check out the shop, you can visit here after each level and you can spend gold coins from beating monsters on cool new things", 'magenta'))
-    shopFunc()
-    print ("")
-    print (colored("Now lets check out your inventory, you can also visit here after each level and see your weapons, moves, stats and more", 'yellow'))
-    inventory()
-
-    staggeredText(0.05, colored("Great!, now that you have completed the tutorial you are ready to start the real game.", 'green'))
-    print ("")
-    newGame()
 
 #WeaponSmithFunc
 def weaponSmith():
@@ -727,7 +742,7 @@ def shopFunc():
             print ("")
 
 pCurrentLevel = 1
-levelFact1 = ""
+levelFact1 = "Did you know..."
 levelFact2 = ""
 levelFact3 = ""
 levelFact4 = ""
@@ -745,6 +760,8 @@ levelFact15 = ""
 
 def inventory():
     print ("")
+    staggeredText(0.1, "Checking Inventory...")
+    print ("")
     staggeredText(0.05, (colored("Here are your stats", 'green')))
     print (playerStats)
     print ("")
@@ -754,9 +771,9 @@ def inventory():
     staggeredText(0.05, (colored("Here are your moves", 'blue')))
     print (pMoveSet)
     print ("")
-    staggeredText(0.05, (colored("You have " + pGoldCoins + " gold coins", 'yellow')))
+    staggeredText(0.05, (colored("You have " + str(pGoldCoins) + " gold coins", 'yellow')))
     print ("")
-    staggeredText(0.05, (colored("You have " + pUltraCoins + " ultra coins", 'magenta')))
+    staggeredText(0.05, (colored("You have " + str(pUltraCoins) + " ultra coins", 'magenta')))
     print ("")
     time.sleep(2)
 
@@ -767,22 +784,23 @@ def levelEnd1():
     global levelEndLoop
     print ("")
     while levelEndLoop == 0:
-
+        print ("")
         staggeredText(0.05, colored("What would you like to do", 'yellow'))
-        afterLevel = input(colored("Press '1' to go to the shop, '2' to check your inventory, or '3' to start the next level"))
+        afterLevel = input(colored("Press '1' to go to the shop, '2' to check your inventory, or '3' to start the next level\n"))
         
-        if afterLevel == 1:
+        if afterLevel == "1":
+
             print ("")
             shopFunc()
-
         
-        elif afterLevel == 2:
+        elif afterLevel == "2":
             print ("")
             inventory()
+            
 
-        elif afterLevel == 3:
-            print ("")
+        elif afterLevel == "3":
             levelEndLoop = 1
+            print ("")
             break
 
         else:
@@ -790,15 +808,15 @@ def levelEnd1():
             print ("")
 
 
-
-
 #levelEnd
 def levelEnd():
-    global pCurrentLevel
-    staggeredText(0.05, colored("Congratualations you have beat level", pCurrentLevel, 'green'))
+    global pCurrentLevel, levelEndLoop
+    levelEndLoop = 0
+    staggeredText(0.05, colored("Congratualations you have beaten level " + str(pCurrentLevel), 'green'))
     print ("")
-    staggeredText(0.05, colored("The Water Pillar is at " + waterPillarHp + " hp.", 'blue'))
+    staggeredText(0.05, colored("The Water Pillar is at " + str(waterPillarHp) + " hp.", 'blue'))
     print ("")
+
     if pCurrentLevel == 1:
         print (levelFact1)
     elif pCurrentLevel == 2:
@@ -836,57 +854,685 @@ def levelEnd():
     print ("")
 
 def levelStart():
-    global pCurrentLevel
+    global pCurrentLevel, pGoldCoins, pUltraCoins, enemy, enemyhp
     if pCurrentLevel == 1:
-        staggeredText(0.05, colored("Stating Level " + pCurrentLevel, 'yellow'))
+        staggeredText(0.05, colored("Starting Level " + str(pCurrentLevel), 'blue'))
+        print ("")
 
+        enemy = Zombie
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
 
+        enemy = Skeleton
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+        enemy = WereWolf
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
 
     elif pCurrentLevel == 2:
-        staggeredText(0.05, colored("Stating Level " + pCurrentLevel, 'yellow'))
+        staggeredText(0.05, colored("Starting Level " + str(pCurrentLevel), 'blue'))
+        print ("")
+
+        enemy = Skeleton
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+        enemy = Ogre
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+
+        enemy = WereWolf
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
 
     elif pCurrentLevel == 3:
-        staggeredText(0.05, colored("Stating Level " + pCurrentLevel, 'yellow'))
+        staggeredText(0.05, colored("Starting Level " + str(pCurrentLevel), 'blue'))
+        print ("")
+        staggeredText(0.05, colored("The Juggernaut approaches!", 'red'))
         
+        enemy = TheJuggernaut
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pUltraCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pUltraCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
     elif pCurrentLevel == 4:
-        staggeredText(0.05, colored("Stating Level " + pCurrentLevel, 'yellow'))
-        
+        staggeredText(0.05, colored("Starting Level " + str(pCurrentLevel), 'blue'))
+
+        enemy = Ogre
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+
+        enemy = WereWolf
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+
+        enemy = ShadowArcher
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")       
+
+
     elif pCurrentLevel == 5:
-        staggeredText(0.05, colored("Stating Level " + pCurrentLevel, 'yellow'))
+        staggeredText(0.05, colored("Starting Level " + str(pCurrentLevel), 'blue'))
+        print ("")
+
+        enemy = Ogre
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+
+        enemy = Golem
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+        enemy = ShadowArcher
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
 
     elif pCurrentLevel == 6:
-        staggeredText(0.05, colored("Stating Level " + pCurrentLevel, 'yellow'))
-        
+        staggeredText(0.05, colored("Starting Level " + str(pCurrentLevel), 'blue'))
+        print ("")
+        staggeredText(0.05, colored("The Frost Giant approaches!", 'red'))
+        enemy = TheFrostGiant
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pUltraCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pUltraCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+
     elif pCurrentLevel == 7:
-        staggeredText(0.05, colored("Stating Level " + pCurrentLevel, 'yellow'))
+        staggeredText(0.05, colored("Starting Level " + str(pCurrentLevel), 'blue'))
+        print ("")
+
+        enemy = ShadowArcher
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+        enemy = Golem
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+
+        enemy = Yeti
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
 
     elif pCurrentLevel == 8:
-        staggeredText(0.05, colored("Stating Level " + pCurrentLevel, 'yellow'))
+        staggeredText(0.05, colored("Starting Level " + str(pCurrentLevel), 'blue'))
+        print ("")
+
+        enemy = Golem
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+        enemy = ShadowArcher
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+
+        enemy = Yeti
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
 
     elif pCurrentLevel == 9:
-        staggeredText(0.05, colored("Stating Level " + pCurrentLevel, 'yellow'))
+        staggeredText(0.05, colored("Starting Level " + str(pCurrentLevel), 'blue'))
+
+        print ("")
+        staggeredText(0.05, colored("The Leviathan approaches!", 'red'))
+        enemy = TheLeviathan
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pUltraCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pUltraCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
 
     elif pCurrentLevel == 10:
-        staggeredText(0.05, colored("Stating Level " + pCurrentLevel, 'yellow'))
+        staggeredText(0.05, colored("Starting Level " + str(pCurrentLevel), 'blue'))
+        print ("")
+
+        enemy = Golem
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+
+        enemy = Yeti
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+
+        enemy = DarkKnight
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+                
 
     elif pCurrentLevel == 11:
-        staggeredText(0.05, colored("Stating Level " + pCurrentLevel, 'yellow'))
+        staggeredText(0.05, colored("Starting Level " + str(pCurrentLevel), 'blue'))
+        print ("")
+
+        enemy = Yeti
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+
+        enemy = DarkKnight
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+
+        enemy = MagmaElemantal
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+
+
 
     elif pCurrentLevel == 12:
-        staggeredText(0.05, colored("Stating Level " + pCurrentLevel, 'yellow'))
+        staggeredText(0.05, colored("Starting Level " + str(pCurrentLevel), 'blue'))
+
+        print ("")
+        staggeredText(0.05, colored("The Dragon King approaches!", 'red'))
+        enemy = TheDragonKing
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pUltraCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pUltraCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
 
     elif pCurrentLevel == 13:
-        staggeredText(0.05, colored("Stating Level " + pCurrentLevel, 'yellow'))
+        staggeredText(0.05, colored("Starting Level " + str(pCurrentLevel), 'blue'))
+
+
+        enemy = DarkKnight
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+        enemy = MagmaElemantal
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+
+        enemy = Necromancer
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
 
     elif pCurrentLevel == 14:
-        staggeredText(0.05, colored("Stating Level " + pCurrentLevel, 'yellow'))
+        staggeredText(0.05, colored("Starting Level " + str(pCurrentLevel), 'blue'))
+
+        enemy = MagmaElemantal
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+        enemy = Necromancer
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+
+        enemy = PhantomKnight
+        print("A", colored(enemy["name"], 'yellow'), "attacked you!")
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pGoldCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+
+    
 
     elif pCurrentLevel == 15:
-        staggeredText(0.05, colored("Stating Level " + pCurrentLevel, 'yellow'))
+        staggeredText(0.05, colored("Starting Level " + str(pCurrentLevel), 'blue'))
         
-
-
-
+        print ("")
+        staggeredText(0.05, colored("The Overseer approaches!", 'red'))
+        enemy = TheOverseer
+        print ("")
+        enemyhp = enemy["hp"]
+        while enemyhp > 0:
+            playerWeaponChoose()
+            playerMoveChoose()
+            playerDMG()
+            cpuMove()
+            endMove()
+            if enemyhp <= 0:
+                pUltraCoins += enemy["coins"]
+                staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pUltraCoins) +  " ultra coins!", 'magenta'))
+                print ("")
+                print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
 
 
 
@@ -894,8 +1540,8 @@ def levelStart():
 #NewGame
 def newGame():
     global pGoldCoins, pUltraCoins, pWeapons, pMoveSet, playerStats, pCurrentLevel
-    print ("Would you like to start a new game?")
-    startNewGame = input("Would you like to play the tutorial " + colored('yes', 'green') + " or no " + colored("no", 'red') + ":")
+    print ("")
+    startNewGame = input("Would you like to start a new game " + colored('yes', 'green') + " or no " + colored("no", 'red') + ":")
 
     if startNewGame.lower() == 'yes':
         pGoldCoins = 0
@@ -908,34 +1554,63 @@ def newGame():
         pMoveSet.append(MediumAttack)
         print ("")
         staggeredText(0.05, colored("Welcome to Water Defence", 'blue'))
-        character = input("Who would you like to play as, Jabbari, Mark, or Justin\n").lower()
+
+        characterPlay = 0
+        while characterPlay == 0:
+            character = input("Who would you like to play as?, 'Jabbari', his friend 'Mark', or his sister 'Justin'\n").lower()
+            if character == "jabbari":
+                staggeredText(0.1, colored("Hello Jabbari!", 'magenta'))
+                characterPlay == 1      
+                break
+            elif character == "justin":
+                staggeredText(0.1, colored("Hello Justin!", 'magenta'))
+                characterPlay == 1
+                break
+            elif character == "mark":
+                staggeredText(0.1, colored("Hello Mark!", 'magenta'))
+                characterPlay == 1
+                break
+            else:
+                print (colored("Please either type 'Jabbari', 'Justin', or 'Mark'\n", 'magenta'))
+
         if character == "jabbari":
             playerStats = jabbariStats
-            print ("")
-            print ("Hello Jabbari!")
-            
-        
         elif character == "mark":
             playerStats = markStats
-            print ("")
-            print ("Hello Mark!")
-
         elif character == "justin":
             playerStats = justinStats
-            print ("")
-            print ("Hello Justin!")
 
         print ("")
         print (colored("Here are your base starting stats " + character, 'blue'))
         print ("")
-        print (colored(playerStats, 'yellow'))
+        print (colored(playerStats, 'green'))
         time.sleep(1)
         print ("")
+        print ("")
         
-        while pCurrentLevel < 15 or waterPillarHp > 0:
-            levelStart
-            playerStats['hp'] = playerStats['bhp']
-            levelEnd
+        while pCurrentLevel <= 15 or waterPillarHp > 0:
+            if waterPillarHp <= 0:
+                print ("")
+                staggeredText(0.05, colored("The Water Pillar has been destroyed!", 'red'))
+                staggeredText(0.05, colored("You made it to level " + pCurrentLevel, 'green'))
+                print ("")
+                print (colored("I hope you use the info you have learned about water pollution to help fix this problem", 'blue'))
+                print ("Cya later and I hope to see you come back!")
+                exit()
+
+            elif pCurrentLevel == 16:
+                staggeredText(0.05, colored("Congratulations, you have beat Water Defence!", 'green'))
+                print ("")
+                print (colored("I hope you use the info you have learned about water pollution to help fix this problem", 'blue'))
+                print ("Cya later and I hope to see you come back!")
+                exit()
+                
+            else:
+                levelStart()
+                playerStats['hp'] = playerStats['bhp']
+                levelEnd()
+
+
 
             
 
@@ -948,16 +1623,190 @@ def newGame():
 
 
 
+print ("")
+staggeredText(0.05, colored("What difficulty would you like to play on", 'yellow'))
+
+
+table = [["Meant for Beginners", "Challenging Difficulty", "Only if you are Pro", "For the true Gamers", "Infinite Gold and Ultra Coins"], ["Easy and Fun to play", "For the average Joe", "Very Difficult", "No Comment Needed", "Max Stats and Pillar Hp"]] 
+headers = [colored("1. Easy", 'green'), colored("2. Medium", 'blue'), colored("3. Hard", 'red'), colored("4. Gamer", 'magenta'), colored("5. Creative", 'cyan')]
+print(tabulate(table, headers, tablefmt="psql"))
+print ("")
+
+difficultyLoop = 0
+while difficultyLoop == 0:
+    staggeredText(0.05, "Type '1' for Easy, '2' for Medium, '3' for Hard, '4' for Gamer, or '5' for Creative")
+    difficultyDecide = input(colored("What difficulty would you like to play on\n"))
+    if difficultyDecide == "1":
+        difficultyLoop = 1
+        print ("")
+        staggeredText(0.05, colored("You are now on easy difficulty", 'green'))
+        print ("")
+
+        #ENEMIES
+
+        Zombie = {"atk": 15, "def": 20, "hp": 100, "acc": 85, "name": "Zombie", "coins": 15}
+        Skeleton = {"atk": 20, "def": 10, "hp": 100, "acc": 80, "name": "Skeleton", "coins": 20}
+        WereWolf = {"atk": 25, "def": 5, "hp": 120, "acc": 90, "name": "Were Wolf", "coins": 20}
+        Ogre = {"atk": 25, "def": 5, "hp": 150, "acc": 80, "name": "Ogre", "coins": 30}
+        ShadowArcher = {"atk": 35, "def": 5, "hp": 90, "acc": 90, "name": "Shadow Archer", "coins": 25}
+        Golem = {"atk": 30, "def": 40, "hp": 200, "acc": 75, "name": "Golem", "coins": 30}
+        Yeti = {"atk": 40, "def": 20, "hp": 150, "acc": 80, "name": "Yeti", "coins": 40}
+        DarkKnight = {"atk": 55, "def": 30, "hp": 180, "acc": 90, "name": "Dark Knight", "coins": 50}
+        MagmaElemantal = {"atk": 50, "def": 50, "hp": 250, "acc": 80, "name": "Magma Elemental", "coins": 65}
+        Necromancer = {"atk": 75, "def": 25, "hp": 150, "acc": 90, "name": "Necromancer", "coins": 85}
+        PhantomKnight = {"atk": 85, "def": 45, "hp": 250, "acc": 90, "name": "Phantom Knight", "coins": 100}
+
+
+        #Bosses
+
+        TheJuggernaut = {"atk": 35, "def": 35, "hp": 150, "acc": 75, "name": "The Juggernaut", "coins": 30}
+        TheFrostGiant = {"atk": 50, "def": 40, "hp": 250, "acc": 75, "name": "The Frost Giant", "coins": 45}
+        TheLeviathan = {"atk": 75, "def": 50, "hp": 350, "acc": 75, "name": "The Leviathan", "coins": 60}
+        TheDragonKing = {"atk": 100, "def": 60, "hp": 450, "acc": 75, "name": "The Dragon King", "coins": 80}
+        TheOverseer = {"atk": 130, "def": 75, "hp": 600, "acc": 75, "name": "The Overseer", "coins": 100}
+
+        break
+
+
+
+    elif difficultyDecide == "2":
+        difficultyLoop = 1
+        print ("")
+        staggeredText(0.05, colored("You are now on medium difficulty", 'blue'))
+        print ("")
+
+        #ENEMIES
+
+        Zombie = {"atk": 17, "def": 25, "hp": 110, "acc": 85, "name": "Zombie", "coins": 15}
+        Skeleton = {"atk": 23, "def": 13, "hp": 110, "acc": 80, "name": "Skeleton", "coins": 20}
+        WereWolf = {"atk": 30, "def": 8, "hp": 135, "acc": 90, "name": "Were Wolf", "coins": 20}
+        Ogre = {"atk": 30, "def": 8, "hp": 165, "acc": 80, "name": "Ogre", "coins": 30}
+        ShadowArcher = {"atk": 40, "def": 8, "hp": 100, "acc": 90, "name": "Shadow Archer", "coins": 25}
+        Golem = {"atk": 38, "def": 50, "hp": 220, "acc": 75, "name": "Golem", "coins": 30}
+        Yeti = {"atk": 45, "def": 25, "hp": 170, "acc": 80, "name": "Yeti", "coins": 40}
+        DarkKnight = {"atk": 65, "def": 35, "hp": 200, "acc": 90, "name": "Dark Knight", "coins": 50}
+        MagmaElemantal = {"atk": 55, "def": 60, "hp": 270, "acc": 80, "name": "Magma Elemental", "coins": 65}
+        Necromancer = {"atk": 80, "def": 30, "hp": 160, "acc": 90, "name": "Necromancer", "coins": 85}
+        PhantomKnight = {"atk": 95, "def": 55, "hp": 270, "acc": 90, "name": "Phantom Knight", "coins": 100}
+
+
+        #Bosses
+
+        TheJuggernaut = {"atk": 40, "def": 40, "hp": 160, "acc": 75, "name": "The Juggernaut", "coins": 30}
+        TheFrostGiant = {"atk": 60, "def": 50, "hp": 270, "acc": 75, "name": "The Frost Giant", "coins": 45}
+        TheLeviathan = {"atk": 85, "def": 60, "hp": 380, "acc": 75, "name": "The Leviathan", "coins": 60}
+        TheDragonKing = {"atk": 110, "def": 70, "hp": 490, "acc": 75, "name": "The Dragon King", "coins": 80}
+        TheOverseer = {"atk": 140, "def": 85, "hp": 650, "acc": 75, "name": "The Overseer", "coins": 100}
+
+        break
+
+    elif difficultyDecide == "3":
+        difficultyLoop = 1
+        print ("")
+        staggeredText(0.05, colored("You are now on hard difficulty", 'red'))
+        print ("")
+
+                #ENEMIES
+
+        Zombie = {"atk": 20, "def": 28, "hp": 120, "acc": 85, "name": "Zombie", "coins": 15}
+        Skeleton = {"atk": 25, "def": 15, "hp": 120, "acc": 80, "name": "Skeleton", "coins": 20}
+        WereWolf = {"atk": 35, "def": 10, "hp": 140, "acc": 90, "name": "Were Wolf", "coins": 20}
+        Ogre = {"atk": 35, "def": 10, "hp": 175, "acc": 80, "name": "Ogre", "coins": 30}
+        ShadowArcher = {"atk": 45, "def": 10, "hp": 110, "acc": 90, "name": "Shadow Archer", "coins": 25}
+        Golem = {"atk": 42, "def": 57, "hp": 230, "acc": 75, "name": "Golem", "coins": 30}
+        Yeti = {"atk": 49, "def": 30, "hp": 180, "acc": 80, "name": "Yeti", "coins": 40}
+        DarkKnight = {"atk": 69, "def": 40, "hp": 220, "acc": 90, "name": "Dark Knight", "coins": 50}
+        MagmaElemantal = {"atk": 60, "def": 70, "hp": 290, "acc": 80, "name": "Magma Elemental", "coins": 65}
+        Necromancer = {"atk": 87, "def": 40, "hp": 180, "acc": 90, "name": "Necromancer", "coins": 85}
+        PhantomKnight = {"atk": 100, "def": 65, "hp": 290, "acc": 90, "name": "Phantom Knight", "coins": 100}
+
+
+        #Bosses
+
+        TheJuggernaut = {"atk": 50, "def": 50, "hp": 170, "acc": 75, "name": "The Juggernaut", "coins": 30}
+        TheFrostGiant = {"atk": 70, "def": 60, "hp": 290, "acc": 75, "name": "The Frost Giant", "coins": 45}
+        TheLeviathan = {"atk": 95, "def": 70, "hp": 400, "acc": 75, "name": "The Leviathan", "coins": 60}
+        TheDragonKing = {"atk": 120, "def": 80, "hp": 520, "acc": 75, "name": "The Dragon King", "coins": 80}
+        TheOverseer = {"atk": 150, "def": 90, "hp": 690, "acc": 75, "name": "The Overseer", "coins": 100}
+
+        break
+
+    elif difficultyDecide == "4":
+        difficultyLoop = 1
+        print ("")
+        staggeredText(0.05, colored("You are now on gamer difficulty", 'magenta'))
+        print ("")
+
+                #ENEMIES
+
+        Zombie = {"atk": 25, "def": 32, "hp": 130, "acc": 85, "name": "Zombie", "coins": 15}
+        Skeleton = {"atk": 27, "def": 19, "hp": 130, "acc": 80, "name": "Skeleton", "coins": 20}
+        WereWolf = {"atk": 38, "def": 14, "hp": 150, "acc": 90, "name": "Were Wolf", "coins": 20}
+        Ogre = {"atk": 38, "def": 15, "hp": 185, "acc": 80, "name": "Ogre", "coins": 30}
+        ShadowArcher = {"atk": 50, "def": 15, "hp": 120, "acc": 90, "name": "Shadow Archer", "coins": 25}
+        Golem = {"atk": 48, "def": 64, "hp": 240, "acc": 75, "name": "Golem", "coins": 30}
+        Yeti = {"atk": 58, "def": 40, "hp": 200, "acc": 80, "name": "Yeti", "coins": 40}
+        DarkKnight = {"atk": 81, "def": 50, "hp": 230, "acc": 90, "name": "Dark Knight", "coins": 50}
+        MagmaElemantal = {"atk": 70, "def": 80, "hp": 320, "acc": 80, "name": "Magma Elemental", "coins": 65}
+        Necromancer = {"atk": 100, "def": 50, "hp": 220, "acc": 90, "name": "Necromancer", "coins": 85}
+        PhantomKnight = {"atk": 120, "def": 70, "hp": 320, "acc": 90, "name": "Phantom Knight", "coins": 100}
+
+
+        #Bosses
+
+        TheJuggernaut = {"atk": 60, "def": 60, "hp": 180, "acc": 75, "name": "The Juggernaut", "coins": 30}
+        TheFrostGiant = {"atk": 80, "def": 70, "hp": 300, "acc": 75, "name": "The Frost Giant", "coins": 45}
+        TheLeviathan = {"atk": 105, "def": 80, "hp": 420, "acc": 75, "name": "The Leviathan", "coins": 60}
+        TheDragonKing = {"atk": 130, "def": 90, "hp": 580, "acc": 75, "name": "The Dragon King", "coins": 80}
+        TheOverseer = {"atk": 160, "def": 100, "hp": 810, "acc": 75, "name": "The Overseer", "coins": 100}
+
+        break
+
+    elif difficultyDecide == "5":
+        difficultyLoop = 1
+        print ("")
+        staggeredText(0.05, colored("You are now in creative mode", 'cyan'))
+        print ("")
+        pGoldCoins = 1000000000000000000000000000000000000000000000000000000
+        pUltraCoins = 1000000000000000000000000000000000000000000000000000000
+        waterPilarHp = 10000000000000000000000000000000000000000000000000000
+        jabbariStats = {
+	        "hp": 500, 
+            "bhp": 500,
+	        "atk": 500, 
+	        "def": 500
+        }
+        markStats = {
+	        "hp": 500, 
+            "bhp": 500,
+	        "atk": 500, 
+	        "def": 500
+        }
+        justinStats = {
+	        "hp": 500, 
+            "bhp": 500,
+	        "atk": 500, 
+	        "def": 500
+        }
+
+        break
+
+    else:
+        staggeredText(0.05, colored("That is not an option", 'red'))
+
+
+
+
 playTutorial = 0
 while playTutorial == 0:
     print ("")
     tutorialPlay = input("Would you like to play the tutorial " + colored('yes', 'green') + " or no " + colored("no", 'red') + ":")
     if tutorialPlay == "yes" or tutorialPlay == "Yes":
         tutorial()
-        playTutorial += 1 
+        playTutorial = 1 
         break
     elif tutorialPlay == "no" or tutorialPlay == "No":
-        playTutorial += 1
+        playTutorial = 1
         newGame()
         break
     else:
@@ -965,23 +1814,3 @@ while playTutorial == 0:
         playTutorial = 0
 
 
-
-
-
-
-
-
-
-
-# while playerStats["hp"] > 0:
-#     enemy = random.choice(enemyList)
-
-#     print ("")
-#     print("A", colored(enemy["name"], 'yellow'), "attacked you!")
-#     print ("")
-#     enemyhp = enemy["hp"]
-#     while enemyhp > 0:
-#         playerWeaponChoose()
-#         playerMoveChoose()
-#         playerDMG()
-#         cpuMove()
