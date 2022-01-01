@@ -22,7 +22,7 @@ pUltraCoins = 0
 waterPilarHp = 100000
 jabbariStats = {
 	"hp": 125, 
-    "bhp": 100,
+    "bhp": 125,
 	"atk": 15, 
 	"def": 10
 }
@@ -34,7 +34,7 @@ markStats = {
 }
 justinStats = {
 	"hp": 100, 
-    "bhp": 125,
+    "bhp": 100,
 	"atk": 20, 
 	"def": 10
 }
@@ -45,9 +45,14 @@ WoodenStick = {"Name": "Wooden Stick" ,"DMG": 10, "ACC": 70}
 MetalStick = {"Name": "Metal Stick" ,"DMG": 20, "ACC": 70, "Price": 20}
 WaterBlaster = {"Name": "Water Blaster" ,"DMG": 25, "ACC": 65, "Price": 30}
 LaserGun = {"Name": "Laser Gun" ,"DMG":30, "ACC": 75, "Price": 50}
-Exterminator = {"Name": "Exterminator" ,"DMG":50, "ACC": 65, "Price": 100}
+Exterminator = {"Name": "Exterminator" ,"DMG":50, "ACC": 65, "Price": 65}
+SwordOfMight = {"Name": "Sword of Might" ,"DMG":65, "ACC": 70, "Price": 80}
+OceanRipper = {"Name": "Ocean Ripper" ,"DMG":75, "ACC": 75, "Price": 100}
+Tsunami = {"Name": "Tsunami" ,"DMG":85, "ACC": 80, "Price": 120}
+PrismOfLight = {"Name": "Prism of Light" ,"DMG":100, "ACC": 75, "Price": 150}
 
-weaponSmithItems = [MetalStick, WaterBlaster, LaserGun, Exterminator]
+
+weaponSmithItems = [MetalStick, WaterBlaster, LaserGun, Exterminator, SwordOfMight, OceanRipper, Tsunami, PrismOfLight]
 
 
 #playerweapons
@@ -62,8 +67,12 @@ HeavyAttack = {"Name": "Heavy Attack", "DMG": 35, "ACC": 15, "Price": 30}
 UltraAim = {"Name": "Ultra Aim", "DMG": 25, "ACC": 40, "Price": 45}
 RapidFire = {"Name": "Rapid Fire", "DMG": 40, "ACC": 30, "Price": 75}
 UltraAttack = {"Name": "Ultra Attack", "DMG": 50, "ACC": 30, "Price": 80}
+SteelAssault = {"Name": "Steel Assault", "DMG": 65, "ACC": 35, "Price": 100}
+EaglesEye = {"Name": "Eagles Eye", "DMG": 75, "ACC": 40, "Price": 120}
+DragonAttack = {"Name": "Dragon Attack", "DMG": 90, "ACC": 45, "Price": 150}
 
-moveShopItems = [Dash, HeavyAttack, UltraAim, RapidFire, UltraAttack]
+
+moveShopItems = [Dash, HeavyAttack, UltraAim, RapidFire, UltraAttack, SteelAssault, EaglesEye, DragonAttack]
 
 #playermoves
 pMoveSet = [LightAttack, MediumAttack]
@@ -195,6 +204,9 @@ def tutorial():
     print ("")
     staggeredText(0.05, colored("Now you must choose a weapon and then choose a move", 'cyan'))
     print ("")
+    
+    Zombie = {"atk": 15, "def": 20, "hp": 100, "acc": 85, "name": "Zombie", "coins": 15}
+    Skeleton = {"atk": 20, "def": 10, "hp": 100, "acc": 80, "name": "Skeleton", "coins": 20}
 
     enemy = Zombie
     print("A", colored(enemy["name"], 'yellow'), "attacked you!")
@@ -352,11 +364,20 @@ You are now at''', colored(playerStats["hp"], 'green'), "hp, the", colored(enemy
 def endMove():
     global enemyhp, pGoldCoins, waterPillarHp
     if playerStats["hp"] <= 0:
+        playerStats['hp'] = 0
         waterPillarHp -= enemy["atk"]
         playerStats["hp"] = playerStats["bhp"]
         print ("")
-        print (colored("The " + enemy["name"] + " defeated you", 'red'))
-        print (colored("The Water Pillar took " + str(enemy["atk"]) + " damage!. It is now at " + str(waterPillarHp) + " hp!", 'magenta'))
+        staggeredText(0.05, colored("The " + enemy["name"] + " defeated you", 'red'))
+        print ("")
+        print (colored("The Water Pillar took " + str(enemy["atk"]) + " damage!. It is now at " + str(waterPillarHp) + " hp!", 'yellow'))
+        print ("")
+        print (colored("You are now back at " + str(playerStats['bhp']) + " hp", 'green'))
+        print ("")
+        print ("--------------------------------------------------------------------------------------------------------------")
+        print ("")
+        enemyhp = -999
+
     else:
         print ("")
 
@@ -367,7 +388,7 @@ def weaponSmith():
     print ("")
     print (colored("Welcome to the Weapon Smith", 'red'))
 
-    table = [["1. Metal Stick", "20 DMG, 70 ACC", 25],["2. Water Blaster", "25 DMG, 65 ACC", 40],["3. Laser Gun","30 DmG, 75 ACC", 65], ["4. Exterminator", "50 DMG, 65 ACC", 100]]
+    table = [["1. Metal Stick", "20 DMG, 70 ACC", 25],["2. Water Blaster", "25 DMG, 65 ACC", 40],["3. Laser Gun","30 DmG, 75 ACC", 65], ["4. Exterminator", "50 DMG, 65 ACC", 100],["5. Sword of Might", "65 DMG, 70 ACC", 80],["6. Ocean Ripper", "75 DMG, 75 ACC", 100],["7. Tsunami", "85 DMG, 80 ACC", 120],["8. Prism of Light", "100 DMG, 75 ACC", 150]]    
     headers = ["Item", "Stats", "Cost"]
     print(tabulate(table, headers, tablefmt="psql"))
     print ("")
@@ -742,21 +763,34 @@ def shopFunc():
             print ("")
 
 pCurrentLevel = 1
-levelFact1 = "Did you know..."
-levelFact2 = ""
-levelFact3 = ""
-levelFact4 = ""
-levelFact5 = ""
-levelFact6 = ""
-levelFact7 = ""
-levelFact8 = ""
-levelFact9 = ""
-levelFact10 = ""
-levelFact11 = ""
-levelFact12 = ""
-levelFact13 = ""
-levelFact14 = ""
-levelFact15 = ""
+levelFact1 = '''Did you know that drinkable freshwater is only 2.5 percent of the total water on Earth
+even though 70 percent of the Earth's surface is covered by water!'''
+levelFact2 = '''Did you know that more than 70 percent of industrial waste
+is dumped into the water!'''
+levelFact3 = '''More than 14 billion pounds of garbage
+ends up in the oceans every year!'''
+levelFact4 = '''Contaminated water is the cause for various diseases
+such as cholera and typhus!'''
+levelFact5 = '''Over 15 million children under the age of fie years die 
+every year from contaminated water!'''
+levelFact6 = '''About 250 million people succumb each year from diseases
+due to contaminated water!'''
+levelFact7 = '''About 2 million tons of human waste are exposed daily to water!'''
+levelFact8 = '''In North America, 45 percent of lakes are polluted
+and unstable for swimming, fishing or drinking!'''
+levelFact9 = '''Each year over 1.5 trillion gallons of untreated sweage and waste 
+are dumped into North American waters!'''
+levelFact10 = '''In developing countries, 70 percent of industrial waste is 
+dumped into the water!'''
+levelFact11 = '''More than 80 percent of sweage in developing countries is 
+dumped into the water untreated!'''
+levelFact12 = '''Every day, more people die from unsafe water than war!'''
+levelFact13 = '''Industry dumps an estimated 400 million tons of
+polluted waste in waters every year!'''
+levelFact14 = '''Agriculture accounts for 70 percent of total
+water consumption worldwide!'''
+levelFact15 = '''Polluted and waste water contains bacteria, parasites,
+and other life threatening diseases!'''
 
 def inventory():
     print ("")
@@ -818,35 +852,82 @@ def levelEnd():
     print ("")
 
     if pCurrentLevel == 1:
-        print (levelFact1)
+        print ("")
+        print (colored(levelFact1, 'cyan'))
+        print ("")
+        time.sleep(1)
     elif pCurrentLevel == 2:
-        print (levelFact2)
+        print ("")
+        print (colored(levelFact2, 'cyan'))
+        print ("")
+        time.sleep(1)
     elif pCurrentLevel == 3:
-        print (levelFact3)
+        print ("")
+        print (colored(levelFact3, 'cyan'))
+        print ("")
+        time.sleep(1)
     elif pCurrentLevel == 4:
-        print (levelFact4)
+        print ("")
+        print (colored(levelFact4, 'cyan'))
+        print ("")
+        time.sleep(1)
     elif pCurrentLevel == 5:
-        print (levelFact5)
+        print ("")
+        time.sleep(1)
+        print (colored(levelFact5, 'cyan'))
+        print ("")
+        time.sleep(1)
     elif pCurrentLevel == 6:
-        print (levelFact6)
+        print ("")
+        time.sleep(1)
+        print (colored(levelFact6, 'cyan'))
+        print ("")
+        time.sleep(1)
     elif pCurrentLevel == 7:
-        print (levelFact7)
+        print ("")
+        print (colored(levelFact7, 'cyan'))
+        print ("")
+        time.sleep(1)
     elif pCurrentLevel == 8:
-        print (levelFact8)
+        print ("")
+        print (colored(levelFact8, 'cyan'))
+        print ("")
+        time.sleep(1)
     elif pCurrentLevel == 9:
-        print (levelFact9)
+        print ("")
+        print (colored(levelFact9, 'cyan'))
+        print ("")
+        time.sleep(1)
     elif pCurrentLevel == 10:
-        print (levelFact10)
+        print ("")
+        print (colored(levelFact10, 'cyan'))
+        print ("")
+        time.sleep(1)
     elif pCurrentLevel == 11:
-        print (levelFact11)
+        print ("")
+        print (colored(levelFact11, 'cyan'))
+        print ("")
+        time.sleep(1)
     elif pCurrentLevel == 12:
-        print (levelFact12)
+        print ("")
+        print (colored(levelFact12, 'cyan'))
+        print ("")
+        time.sleep(1)
     elif pCurrentLevel == 13:
-        print (levelFact13)
+        print ("")
+        print (colored(levelFact13, 'cyan'))
+        print ("")
+        time.sleep(1)
     elif pCurrentLevel == 14:
-        print (levelFact14)
+        print ("")
+        print (colored(levelFact14, 'cyan'))
+        print ("")
+        time.sleep(1)
     elif pCurrentLevel == 15:
-        print (levelFact15)
+        print ("")
+        print (colored(levelFact15, 'cyan'))
+        print ("")
+        time.sleep(1)
 
     print ("")
     levelEnd1()
@@ -876,6 +957,9 @@ def levelStart():
                 print ("--------------------------------------------------------------------------------------------------------------")
                 print ("")
 
+            elif enemyhp == -999:
+                print ("")
+
         enemy = Skeleton
         print("A", colored(enemy["name"], 'yellow'), "attacked you!")
         print ("")
@@ -893,6 +977,9 @@ def levelStart():
                 print ("--------------------------------------------------------------------------------------------------------------")
                 print ("")
 
+            elif enemyhp == -999:
+                print ("")
+
         enemy = WereWolf
         print("A", colored(enemy["name"], 'yellow'), "attacked you!")
         print ("")
@@ -908,6 +995,9 @@ def levelStart():
                 staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
                 print ("")
                 print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+            elif enemyhp == -999:
                 print ("")
 
     elif pCurrentLevel == 2:
@@ -931,6 +1021,9 @@ def levelStart():
                 print ("--------------------------------------------------------------------------------------------------------------")
                 print ("")
 
+            elif enemyhp == -999:
+                print ("")
+
         enemy = Ogre
         print("A", colored(enemy["name"], 'yellow'), "attacked you!")
         print ("")
@@ -946,6 +1039,9 @@ def levelStart():
                 staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
                 print ("")
                 print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+            elif enemyhp == -999:
                 print ("")
 
 
@@ -964,6 +1060,9 @@ def levelStart():
                 staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
                 print ("")
                 print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+            elif enemyhp == -999:
                 print ("")
 
 
@@ -988,6 +1087,9 @@ def levelStart():
                 print ("--------------------------------------------------------------------------------------------------------------")
                 print ("")
 
+            elif enemyhp == -999:
+                print ("")
+
     elif pCurrentLevel == 4:
         staggeredText(0.05, colored("Starting Level " + str(pCurrentLevel), 'blue'))
 
@@ -1008,6 +1110,9 @@ def levelStart():
                 print ("--------------------------------------------------------------------------------------------------------------")
                 print ("")
 
+            elif enemyhp == -999:
+                print ("")
+
 
         enemy = WereWolf
         print("A", colored(enemy["name"], 'yellow'), "attacked you!")
@@ -1026,6 +1131,9 @@ def levelStart():
                 print ("--------------------------------------------------------------------------------------------------------------")
                 print ("")
 
+            elif enemyhp == -999:
+                print ("")
+
 
         enemy = ShadowArcher
         print("A", colored(enemy["name"], 'yellow'), "attacked you!")
@@ -1042,7 +1150,10 @@ def levelStart():
                 staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
                 print ("")
                 print ("--------------------------------------------------------------------------------------------------------------")
-                print ("")       
+                print ("")   
+
+            elif enemyhp == -999:
+                print ("")    
 
 
     elif pCurrentLevel == 5:
@@ -1066,6 +1177,9 @@ def levelStart():
                 print ("--------------------------------------------------------------------------------------------------------------")
                 print ("")
 
+            elif enemyhp == -999:
+                print ("")
+
 
         enemy = Golem
         print("A", colored(enemy["name"], 'yellow'), "attacked you!")
@@ -1084,6 +1198,9 @@ def levelStart():
                 print ("--------------------------------------------------------------------------------------------------------------")
                 print ("")
 
+            elif enemyhp == -999:
+                print ("")
+
         enemy = ShadowArcher
         print("A", colored(enemy["name"], 'yellow'), "attacked you!")
         print ("")
@@ -1099,6 +1216,9 @@ def levelStart():
                 staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
                 print ("")
                 print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+            elif enemyhp == -999:
                 print ("")
 
     elif pCurrentLevel == 6:
@@ -1119,6 +1239,9 @@ def levelStart():
                 staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pUltraCoins) +  " ultra coins!", 'magenta'))
                 print ("")
                 print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+            elif enemyhp == -999:
                 print ("")
 
 
@@ -1143,6 +1266,9 @@ def levelStart():
                 print ("--------------------------------------------------------------------------------------------------------------")
                 print ("")
 
+            elif enemyhp == -999:
+                print ("")
+
         enemy = Golem
         print("A", colored(enemy["name"], 'yellow'), "attacked you!")
         print ("")
@@ -1158,6 +1284,9 @@ def levelStart():
                 staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
                 print ("")
                 print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+            elif enemyhp == -999:
                 print ("")
 
 
@@ -1176,6 +1305,9 @@ def levelStart():
                 staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
                 print ("")
                 print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+            elif enemyhp == -999:
                 print ("")
 
 
@@ -1200,6 +1332,9 @@ def levelStart():
                 print ("--------------------------------------------------------------------------------------------------------------")
                 print ("")
 
+            elif enemyhp == -999:
+                print ("")
+
         enemy = ShadowArcher
         print("A", colored(enemy["name"], 'yellow'), "attacked you!")
         print ("")
@@ -1215,6 +1350,9 @@ def levelStart():
                 staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
                 print ("")
                 print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+            elif enemyhp == -999:
                 print ("")
 
 
@@ -1233,6 +1371,9 @@ def levelStart():
                 staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
                 print ("")
                 print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+            elif enemyhp == -999:
                 print ("")
 
 
@@ -1257,6 +1398,9 @@ def levelStart():
                 print ("--------------------------------------------------------------------------------------------------------------")
                 print ("")
 
+            elif enemyhp == -999:
+                print ("")
+
     elif pCurrentLevel == 10:
         staggeredText(0.05, colored("Starting Level " + str(pCurrentLevel), 'blue'))
         print ("")
@@ -1278,6 +1422,9 @@ def levelStart():
                 print ("--------------------------------------------------------------------------------------------------------------")
                 print ("")
 
+            elif enemyhp == -999:
+                print ("")
+
 
         enemy = Yeti
         print("A", colored(enemy["name"], 'yellow'), "attacked you!")
@@ -1296,6 +1443,9 @@ def levelStart():
                 print ("--------------------------------------------------------------------------------------------------------------")
                 print ("")
 
+            elif enemyhp == -999:
+                print ("")
+
 
         enemy = DarkKnight
         print("A", colored(enemy["name"], 'yellow'), "attacked you!")
@@ -1312,6 +1462,9 @@ def levelStart():
                 staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
                 print ("")
                 print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+            elif enemyhp == -999:
                 print ("")
 
                 
@@ -1337,6 +1490,9 @@ def levelStart():
                 print ("--------------------------------------------------------------------------------------------------------------")
                 print ("")
 
+            elif enemyhp == -999:
+                print ("")
+
 
         enemy = DarkKnight
         print("A", colored(enemy["name"], 'yellow'), "attacked you!")
@@ -1355,6 +1511,9 @@ def levelStart():
                 print ("--------------------------------------------------------------------------------------------------------------")
                 print ("")
 
+            elif enemyhp == -999:
+                print ("")
+
 
         enemy = MagmaElemantal
         print("A", colored(enemy["name"], 'yellow'), "attacked you!")
@@ -1371,6 +1530,9 @@ def levelStart():
                 staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
                 print ("")
                 print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+            elif enemyhp == -999:
                 print ("")
 
 
@@ -1397,6 +1559,9 @@ def levelStart():
                 print ("--------------------------------------------------------------------------------------------------------------")
                 print ("")
 
+            elif enemyhp == -999:
+                print ("")
+
 
     elif pCurrentLevel == 13:
         staggeredText(0.05, colored("Starting Level " + str(pCurrentLevel), 'blue'))
@@ -1419,6 +1584,9 @@ def levelStart():
                 print ("--------------------------------------------------------------------------------------------------------------")
                 print ("")
 
+            elif enemyhp == -999:
+                print ("")
+
         enemy = MagmaElemantal
         print("A", colored(enemy["name"], 'yellow'), "attacked you!")
         print ("")
@@ -1434,6 +1602,9 @@ def levelStart():
                 staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
                 print ("")
                 print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+            elif enemyhp == -999:
                 print ("")
 
 
@@ -1452,6 +1623,9 @@ def levelStart():
                 staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
                 print ("")
                 print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+            elif enemyhp == -999:
                 print ("")
 
 
@@ -1475,6 +1649,9 @@ def levelStart():
                 print ("--------------------------------------------------------------------------------------------------------------")
                 print ("")
 
+            elif enemyhp == -999:
+                print ("")
+
         enemy = Necromancer
         print("A", colored(enemy["name"], 'yellow'), "attacked you!")
         print ("")
@@ -1490,6 +1667,9 @@ def levelStart():
                 staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
                 print ("")
                 print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+            elif enemyhp == -999:
                 print ("")
 
 
@@ -1508,6 +1688,9 @@ def levelStart():
                 staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pGoldCoins) +  " ultra coins!", 'magenta'))
                 print ("")
                 print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+            elif enemyhp == -999:
                 print ("")
 
 
@@ -1532,6 +1715,9 @@ def levelStart():
                 staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " ultra coins" + " you now have " + str(pUltraCoins) +  " ultra coins!", 'magenta'))
                 print ("")
                 print ("--------------------------------------------------------------------------------------------------------------")
+                print ("")
+
+            elif enemyhp == -999:
                 print ("")
 
 
@@ -1592,17 +1778,21 @@ def newGame():
             if waterPillarHp <= 0:
                 print ("")
                 staggeredText(0.05, colored("The Water Pillar has been destroyed!", 'red'))
+                print ("")
                 staggeredText(0.05, colored("You made it to level " + pCurrentLevel, 'green'))
                 print ("")
+                time.sleep(1)
                 print (colored("I hope you use the info you have learned about water pollution to help fix this problem", 'blue'))
-                print ("Cya later and I hope to see you come back!")
+                print ("")
+                print ("Cya later and I hope to see you come back next time!")
                 exit()
 
             elif pCurrentLevel == 16:
                 staggeredText(0.05, colored("Congratulations, you have beat Water Defence!", 'green'))
                 print ("")
                 print (colored("I hope you use the info you have learned about water pollution to help fix this problem", 'blue'))
-                print ("Cya later and I hope to see you come back!")
+                print ("")
+                print ("Cya later and I hope to see you come back next time!")
                 exit()
                 
             else:
@@ -1812,5 +2002,3 @@ while playTutorial == 0:
     else:
         print ("That is not a valid option, please type either yes or no")
         playTutorial = 0
-
-
