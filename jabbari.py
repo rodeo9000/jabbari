@@ -187,7 +187,7 @@ def tutorial():
     print (colored(playerStats, 'yellow'))
     time.sleep(1)
     print("")
-    staggeredText(0.025, colored("hp is the amount of health you have, if is reaches 0 during a battle then you lose, you can increase this with upgrades", 'magenta'))
+    staggeredText(0.025, colored("hp is the amount of health you have, if is reaches 0 during a battle then the water pillar will take damage, you can increase this with upgrades", 'magenta'))
     staggeredText(0.025, colored("bhp is your base hp, this is what you hp will be set to after each level, you can increase this with upgrades", 'yellow'))
     print ("")
     staggeredText(0.025, colored("atk is the amount of damage your player does, this can be increased with upgrades", 'magenta'))
@@ -222,6 +222,8 @@ def tutorial():
             pGoldCoins += enemy["coins"]
             staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
             print ("")
+            print ("--------------------------------------------------------------------------------------------------------------")
+            print ("")
 
     enemy = Skeleton
     print("A", colored(enemy["name"], 'yellow'), "attacked you!")
@@ -237,7 +239,8 @@ def tutorial():
             pGoldCoins += enemy["coins"]
             staggeredText(0.025, colored("You defeated the " + enemy["name"] + " and received " + str(enemy["coins"]) + " gold coins" + " you now have " + str(pGoldCoins) +  " gold coins!", 'magenta'))
             print ("")
-
+            print ("--------------------------------------------------------------------------------------------------------------")
+            print ("")
 
 
 
@@ -249,12 +252,18 @@ def tutorial():
     print ("")
     print (colored("On levels 3, 6, 9, 12 and 15 there will be a boss, bosses are extra hard to defeat but will give ultra coins when defeated", 'cyan'))
     print ("")
+    time.sleep(2)
+    print ("")
     print (colored("Next lets check out the shop, you can visit here after each level and you can spend gold coins from beating monsters on cool new things", 'magenta'))
     shopFunc()
     print ("")
+    time.sleep(1)
+    print ("")
     print (colored("Now lets check out your inventory, you can also visit here after each level and see your weapons, moves, stats and more", 'yellow'))
+    print ("")
     inventory()
-
+    time.sleep(1)
+    print ("")
     staggeredText(0.05, colored("Great!, now that you have completed the tutorial you are ready to start the real game.", 'green'))
     print ("")
     newGame()
@@ -721,10 +730,10 @@ def ultraShop():
                 didBuy = 0
 
 
-shopWhereLoop = 0
 #ShopFunc
 def shopFunc():
     global shopWhereLoop
+    shopWhereLoop = 0
     print ("")
     staggeredText(0.1, colored("Welcome to the shop", 'yellow'))
     print ("")
