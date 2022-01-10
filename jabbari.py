@@ -19,23 +19,23 @@ from colorama import Fore, Style
 score = 0
 pGoldCoins = 0
 pUltraCoins = 0
-waterPilarHp = 100000
+waterPillarHp = 10000
 jabbariStats = {
 	"hp": 125, 
     "bhp": 125,
-	"atk": 15, 
+	"atk": 20, 
 	"def": 10
 }
 markStats = {
 	"hp": 150, 
     "bhp": 150,
-	"atk": 10, 
+	"atk": 15, 
 	"def": 10
 }
 justinStats = {
 	"hp": 100, 
     "bhp": 100,
-	"atk": 20, 
+	"atk": 25, 
 	"def": 10
 }
 
@@ -146,9 +146,6 @@ print ("")
 
 time.sleep(1)
 score = 0
-goldCoins = 10000
-utlraCoins = 10000
-waterPillarHp = 1000
 
 
 #Tutorial       
