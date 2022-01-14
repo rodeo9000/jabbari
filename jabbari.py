@@ -547,7 +547,7 @@ def upgradeShop():
         return upgradeShop()
 
     if chosenItem == 0:
-        return upgradeShop()
+        return shopFunc()
         
     elif chosenItem > len(upgradeShopItems):
         print (colored("That is not an option. Try again.", 'red'))
